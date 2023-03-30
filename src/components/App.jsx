@@ -8,6 +8,7 @@ import { refreshUser } from 'redux/auth/authOperations';
 
 import { Layout } from './Layout';
 import { LoginForm } from './LoginForm/LoginForm';
+import { HomePage } from './HomePage/HomePage';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        {/* <Route index element={<HomePage />} /> */}
+        <Route index element={<HomePage />} />
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/contacts" element={<Contacts />} />
