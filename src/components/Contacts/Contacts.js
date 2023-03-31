@@ -1,4 +1,3 @@
-import ContactForm from 'components/ContactForm/ContactForm';
 import ContactList from 'components/ContactList/ContactList';
 import Filter from 'components/Filter/Filter';
 import React, { useEffect } from 'react';
@@ -10,6 +9,7 @@ import {
   selectContactsError,
   selectContactsLoading,
 } from 'redux/selectors';
+import ContactForm from 'components/ContactForm/ContactForm';
 
 export const Contacts = () => {
   const dispatch = useDispatch();

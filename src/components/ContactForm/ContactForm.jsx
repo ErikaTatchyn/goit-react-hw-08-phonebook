@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 
 import styles from './ContactForm.module.css';
 import { addContact } from 'redux/operations';
+import { Button } from '@mui/material';
 
 function ContactForm({ contacts }) {
   const [name, setName] = useState('');
@@ -69,9 +70,9 @@ function ContactForm({ contacts }) {
         />
       </label>
 
-      <button type="submit" className={styles.button}>
+      <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
         Add contact
-      </button>
+      </Button>
     </form>
   );
 }

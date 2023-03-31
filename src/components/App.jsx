@@ -8,7 +8,7 @@ import { refreshUser } from 'redux/auth/authOperations';
 
 import { Layout } from './Layout';
 import { LoginForm } from './LoginForm/LoginForm';
-import { HomePage } from './HomePage/HomePage';
+import HomePage from './HomePage/HomePage';
 
 export const App = () => {
   const dispatch = useDispatch();
