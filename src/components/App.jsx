@@ -9,6 +9,7 @@ import { refreshUser } from 'redux/auth/authOperations';
 import { Layout } from './Layout';
 import { LoginForm } from './LoginForm/LoginForm';
 import HomePage from './HomePage/HomePage';
+import { PrivateRoute, RestrictedRoute } from './Routes';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -21,9 +22,27 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path="/register" element={<RegisterForm />} />
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/contacts" element={<Contacts />} />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute
+              redirectTo="/contacts"
+              component={<RegisterForm />}
+            />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<LoginForm />} />
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={<Contacts />} />
+          }
+        />
       </Route>
     </Routes>
   );
