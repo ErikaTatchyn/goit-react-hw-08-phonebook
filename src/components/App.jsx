@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 
 import { RegisterForm } from './Register/Register';
@@ -10,15 +10,18 @@ import { Layout } from './Layout';
 import { LoginForm } from './LoginForm/LoginForm';
 import HomePage from './HomePage/HomePage';
 import { PrivateRoute, RestrictedRoute } from './Routes';
+import { selectIsRefreshing } from 'redux/selectors';
 
 export const App = () => {
   const dispatch = useDispatch();
-
+  const isRefreshing = useSelector(selectIsRefreshing);
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  return (
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
